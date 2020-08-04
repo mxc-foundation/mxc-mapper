@@ -1,0 +1,15 @@
+{
+    "project": "MXC 지도",
+    "Hello": "안녕하세요!",
+    "Still Getting Started?": "아직 시작 못 하셨나요?",
+    "Starter": "입문자",
+    "Welcome to your new Gatsby site. Now go build something great!": "MXC 매퍼에 오신 것을 환영합니다. 이제 멋진 것을 만들어보세요!",
+    "Run the following in your terminal!": "터미널에서 다음을 실행하십시오!",
+    "Github": "Github",
+    "About": "소개",
+    "View on Github": "Github에서보기",  
+    "Created By": "작성자",
+    "Note: Gatsby CLI required globally for the above command": "참고 : 위 명령에 Gatsby CLI가 전역 적으로 필요합니다.",
+    "MXC Foundation": "MXC Foundation",
+    "Gateways and supernodes info": "게이트웨이 및 수퍼 노드 정보"
+}

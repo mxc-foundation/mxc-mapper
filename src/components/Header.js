@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { Trans } from 'gatsby-plugin-react-i18next';
 import { FaGithub } from 'react-icons/fa';
 
 import { useSiteMetadata } from 'hooks';
@@ -17,11 +18,11 @@ const Header = () => {
         </p>
         <ul>
           <li>
-            <Link to="/about/">About</Link>
+            <Link to="/about/"><Trans>About</Trans></Link>
           </li>
           <li>
             <a href={companyUrl}>
-              <span className="visually-hidden">Github</span>
+              <span className="visually-hidden"><Trans>Github</Trans></span>
               <FaGithub />
             </a>
           </li>
