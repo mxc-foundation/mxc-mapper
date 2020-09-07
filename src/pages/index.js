@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown } from 'react-bootstrap';
 import L from 'leaflet';
 import { Marker } from 'react-leaflet';
 import { graphql } from "gatsby";
@@ -119,20 +121,20 @@ const IndexPage = ({ data }) => {
         <p><Trans>Run the following in your terminal!</Trans></p>
         <Snippet>gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet</Snippet>
         <p className="note"><Trans>Note: Gatsby CLI required globally for the above command</Trans></p>
-        <ul className="languages">
-          {languages.map((lng) => (
-            <li key={lng}>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  changeLanguage(lng);
-                }}>
-                {lng}
-              </a>
-            </li>
+        <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Languages
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+        {languages.map((lng) => (
+          <Dropdown.Item href="#" onClick={(e) => {
+            e.preventDefault();
+            changeLanguage(lng);
+          }} >{lng}</Dropdown.Item>
           ))}
-        </ul>
+        </Dropdown.Menu>
+      </Dropdown>
       </Container>
     </Layout>
   );
