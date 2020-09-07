@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet';
-import { Trans, useTranslation, useI18next} from 'gatsby-plugin-react-i18next';
+import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import L from 'leaflet';
 import { Marker } from 'react-leaflet';
 import { graphql } from "gatsby";
@@ -31,22 +31,22 @@ const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
 
 const IndexPage = ({ data }) => {
   const markerRef = useRef();
-  const {t} = useTranslation();
-  const {languages, changeLanguage} = useI18next();
+  const { t } = useTranslation();
+  const { languages, changeLanguage } = useI18next();
   /**
    * mapEffect
    * @description Fires a callback once the page renders
    * @example Here this is and example of being used to zoom in and set a popup on load
    */
-  
+
   async function mapEffect({ leafletElement } = {}) {
-    if ( !leafletElement ) return;
+    if (!leafletElement) return;
 
     const popup = L.popup({
       maxWidth: 800,
     });
 
-    const location = await getCurrentLocation().catch(() => LOCATION );
+    const location = await getCurrentLocation().catch(() => LOCATION);
     const { current = {} } = markerRef || {};
     const { leafletElement: marker } = current;
 
@@ -63,22 +63,22 @@ const IndexPage = ({ data }) => {
       </div>
     `;
 
-    marker.setLatLng( location );
+    marker.setLatLng(location);
     //marker.setLatLng( {lat: 52.6091575, lng: 13.5164579 } );
-    popup.setLatLng( location );
-    popup.setContent( popupContentHello );
+    popup.setLatLng(location);
+    popup.setContent(popupContentHello);
 
-    setTimeout( async () => {
-      await promiseToFlyTo( leafletElement, {
+    setTimeout(async () => {
+      await promiseToFlyTo(leafletElement, {
         zoom: ZOOM,
         center: location,
       });
 
-      marker.bindPopup( popup );
+      marker.bindPopup(popup);
 
-      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom );
-      setTimeout(() => marker.setPopupContent( popupContentGatsby ), timeToUpdatePopupAfterZoom );
-    }, timeToZoom );
+      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
+      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom);
+    }, timeToZoom);
   }
 
   const mapSettings = {
@@ -88,16 +88,17 @@ const IndexPage = ({ data }) => {
     mapEffect,
   };
 
-  
+
   //const totalCount = data.allMxcSupernode.totalCount;
+  console.log('locations', data);
   let locations = new Array();
 
-  data.allMxcSupernode.edges.forEach(function(val,index){ 
-    locations.push({lat: val.node.location.latitude,lng: val.node.location.longitude});
-  }) 
+  data.allMxcSupernode.nodes.forEach(function(val,index){ 
+    locations.push({lat: val.location.latitude,lng: val.location.longitude, id: val.id});
+  })
 
-  console.log('locations',locations);
 
+  //const [count, setCount] = useState(0);
   return (
     <Layout pageName="home">
       <Helmet>
@@ -106,31 +107,32 @@ const IndexPage = ({ data }) => {
 
       <Map {...mapSettings}>
         <Marker ref={markerRef} position={CENTER} />
-        
+
         {locations.map((location, index) => {
-        return <Marker key={index} position={{ lat: location.lat, lng: location.lng }}></Marker>
-      })}
+          return <Marker key={location.id} position={{ lat: location.lat, lng: location.lng }}></Marker>
+        })}
       </Map>
 
       <Container type="content" className="text-center home-start">
+
         <h2><Trans>Still Getting Started?</Trans></h2>
         <p><Trans>Run the following in your terminal!</Trans></p>
         <Snippet>gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet</Snippet>
         <p className="note"><Trans>Note: Gatsby CLI required globally for the above command</Trans></p>
         <ul className="languages">
-        {languages.map((lng) => (
-          <li key={lng}>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                changeLanguage(lng);
-              }}>
-              {lng}
-            </a>
-          </li>
-        ))}
-      </ul>
+          {languages.map((lng) => (
+            <li key={lng}>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeLanguage(lng);
+                }}>
+                {lng}
+              </a>
+            </li>
+          ))}
+        </ul>
       </Container>
     </Layout>
   );
@@ -141,17 +143,15 @@ export default IndexPage;
 export const query = graphql`
   query {
     allMxcSupernode {
-      edges {
-        node {
-          id
-          location {
-            latitude
-            longitude
-            altitude
-          }
-        }
+    nodes {
+      location {
+        altitude
+        latitude
+        longitude
       }
-      totalCount
+      id
     }
+    totalCount
   }
+}
 `
