@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown } from 'react-bootstrap';
 import { FaGithub } from 'react-icons/fa';
 
