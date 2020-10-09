@@ -63,7 +63,7 @@ const MapTileLayerCluster = ({ crd }) => {
         });
       }; */
     
-    const markers = data && data.allMxcSupernode.nodes.map(function (val, index) {
+    const markers = data && data.allMxcSupernode.nodes.map(function (val) {
         return <Marker key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>
     })
 
@@ -85,4 +85,4 @@ const MapTileLayerCluster = ({ crd }) => {
     </Wrapper>);
 };
 
-export default MapTileLayerCluster;
+export default MapTileLayerCluster; 

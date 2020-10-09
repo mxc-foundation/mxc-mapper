@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 
-const style = {
+/* const style = {
   arrow: {
     border: 'solid black',
     borderWidth: '0 3px 3px 0',
@@ -16,7 +16,7 @@ const style = {
     transform: 'rotate(45deg)',
     webkitTransform: 'rotate(45deg)'
   }
-}
+} */
 
 
 const Example = () => {

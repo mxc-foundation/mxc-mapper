@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
+import { Trans, useI18next } from 'gatsby-plugin-react-i18next';
 import { Dropdown } from 'react-bootstrap';
 import { FaGithub } from 'react-icons/fa';
 
@@ -34,7 +34,7 @@ const Header = () => {
 
             <Dropdown.Menu>
               {languages.map((lng) => (
-                <Dropdown.Item href="#" onClick={(e) => {
+                <Dropdown.Item href="#" key={lng} onClick={(e) => {
                   e.preventDefault();
                   changeLanguage(lng);
                 }} >{lng}</Dropdown.Item>

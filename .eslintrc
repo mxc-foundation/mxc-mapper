@@ -1,0 +1,38 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    
+    "env": {
+        "jest": true,
+        "browser": true
+    },
+    "rules": {
+        "strict": [
+            "error",
+            "never"
+        ],
+        "react/prop-types": 0,
+        "react/jsx-props-no-spreading": 0,
+        "import/no-named-as-default": 0,
+        "valid-typeof": "off",
+        "camelcase": "off",
+        "no-unused-vars": "off",
+        "react/self-closing-comp": "off",
+        "no-nested-ternary": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+    }
+}

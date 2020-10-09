@@ -100,9 +100,9 @@ const Layout = ({ children, pageName, total }) => {
           onToggle={(expanded) => {
             setExpanded(expanded);
           }}
-          onSelect={(selected) => {
-            // Add your code here
-          }}
+          /* onSelect={(selected) => {
+            
+          }} */
         >
           <SideNav.Toggle />
           {expanded && <SideNav.Nav >
