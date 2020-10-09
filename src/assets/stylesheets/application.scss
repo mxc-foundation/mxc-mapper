@@ -19,6 +19,11 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+nav {
+  right: 0 !important;
+  background: #050319 !important;
+}
+
 main {
   padding: 2em 0;
 }

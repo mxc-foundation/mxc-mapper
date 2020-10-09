@@ -8,11 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import mxc_logo from 'assets/images/MXC_Logo_Navy@2x.png';
 
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
-import DropdownC from "./DropdownC";
-import RSwitch from "./RSwitch";
+//import DropdownC from "./DropdownC";
+//import RSwitch from "./RSwitch";
 
-//import Header from 'components/Header';
-//import Footer from 'components/Footer';
 
 const localStyled = {
   flexCenter: {
@@ -43,22 +41,16 @@ const localStyled = {
   }
 }
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
-const Layout = ({ children, pageName }) => {
+const Layout = ({ children, pageName, total }) => {
   let className = '';
 
   if (pageName) {
     className = `${className} page-${pageName}`;
   }
 
-  const [expanded, setExpanded] = useState(false);
-  const online = 9567;
-  const offline = 57;
+  const [expanded, setExpanded] = useState(true);
+  //const online = 9567;
+  //const offline = 57;
 
   /* const [state, setState] = React.useState({
     checked: props.on
@@ -88,16 +80,16 @@ const Layout = ({ children, pageName }) => {
                   <img src={mxc_logo} alt={'logo'}></img>
               </div>
           </div>
-          <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
+          {/* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
               <div style={{ display: 'flex', alignItems: 'center', padding: '15px 15px 10px 15px' }}>
-                  <RSwitch /* enableAll={false} */ />
+                  <RSwitch />
                   <span style={{ padding: '0px 16px'}}>Show Footprint</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', padding: '15px 15px 10px 15px' }}>
-                  <RSwitch /* enableAll={false} */ />
+                  <RSwitch />
                   <span style={{ padding: '0px 16px'}}>Coverage</span>
               </div>
-          </div>
+          </div> */} {/* non-function */}
           
           {children}
         </main>
@@ -119,13 +111,13 @@ const Layout = ({ children, pageName }) => {
                 Welcome to MXC Mapper
               </NavText>
             </NavItem>
-            <NavItem eventKey="home" style={localStyled.flexCenter} >
+            {/* <NavItem eventKey="home" style={localStyled.flexCenter} >
               <DropdownC />
-            </NavItem>
+            </NavItem> */}{/* non-function */}
             
             <NavItem eventKey="charts">
               <NavText style={localStyled.total} >
-                9450
+                {total}
               </NavText>
             </NavItem>
             <NavItem eventKey="gate">
@@ -134,7 +126,7 @@ const Layout = ({ children, pageName }) => {
                   </NavText>
             </NavItem>
 
-            <NavItem eventKey="totAmount" style={{ padding: '0px 16px' }}>
+            {/* <NavItem eventKey="totAmount" style={{ padding: '0px 16px' }}>
               <NavText>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 16 }}>
                   <span>Total Amount :</span>
@@ -150,9 +142,9 @@ const Layout = ({ children, pageName }) => {
                   <span>453.34 MXC</span>
                 </div>
               </NavText>
-            </NavItem>
+            </NavItem> */}{/* non-function */}
 
-            <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
+            {/* <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
               <NavText>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label style={{ fontSize: '1rem' }}>
@@ -169,7 +161,7 @@ const Layout = ({ children, pageName }) => {
                   </label>
                 </div>
               </NavText>
-            </NavItem>
+            </NavItem> */}{/* non-function */}
 
           </SideNav.Nav>}
         </SideNav>

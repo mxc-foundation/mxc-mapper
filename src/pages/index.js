@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import Favicon from 'react-favicon';
 import { Helmet } from 'react-helmet';
-import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
+import { /* Trans ,*/ useTranslation } from 'gatsby-plugin-react-i18next';
 import { Map } from 'react-leaflet';
-//import { graphql } from "gatsby";
+import { graphql } from "gatsby";
 import FoundLocationMap from "../components/FoundLocationMap";
 import Layout from 'components/Layout';
 
@@ -13,14 +14,20 @@ import Snippet from 'components/Snippet'; */
 //import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
 
 const IndexPage = ({ data }) => {
-  const markerRef = useRef();
+  //const markerRef = useRef();
   const { t } = useTranslation();
   
   let position = [];
   position = [51, 13];
 
+  let total = 0;
+  if(data){
+    total = data.allMxcSupernode.totalCount;
+  }
+  
   return (
-    <Layout pageName="home">
+    <Layout pageName="home" total={total}>
+      <Favicon url="http://oflisback.github.io/react-favicon/public/img/github.ico" />
       <Helmet>
         <title>{t('project')}</title>
       </Helmet>
@@ -43,7 +50,7 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage;
 
-/* export const query = graphql`
+export const query = graphql`
   query {
     allMxcSupernode {
     nodes {
@@ -57,4 +64,4 @@ export default IndexPage;
     totalCount
   }
 }
-` */
+`

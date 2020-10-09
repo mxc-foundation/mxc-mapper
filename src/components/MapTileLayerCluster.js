@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from "gatsby";
-import L from 'leaflet';
+//import L from 'leaflet';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet/dist/leaflet.css';
-import './leaflet.css'
+import './map.styles.css'
 import styled from 'styled-components';
 //import GatewayStore from '../stores/GatewayStore';
 //import { GATEWAY_ICON, MAP_LAYER } from '../util/Data';
-import { Map, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
+import { Map, Marker, TileLayer, ZoomControl } from 'react-leaflet'
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 
@@ -19,10 +19,10 @@ const Wrapper = styled.div`
     height: ${props => props.height};
     position: relative;
 `;
-const MapWrapper = styled(Map)`
+/* const MapWrapper = styled(Map)`
     width: ${props => props.width};
     height: ${props => props.height};
-`;
+`; */
 
 const MapTileLayerCluster = ({ crd }) => {
     const data = useStaticQuery(graphql`
@@ -51,7 +51,7 @@ const MapTileLayerCluster = ({ crd }) => {
     const position = [lat, lon];
 
 
-    const createClusterCustomIcon = function (cluster) {
+    /* const createClusterCustomIcon = function (cluster) {
         return L.icon({
             //iconUrl: GATEWAY_ICON,
     
@@ -61,12 +61,7 @@ const MapTileLayerCluster = ({ crd }) => {
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
-        /* return L.divIcon({
-          html: `<span>${cluster.getChildCount()}</span>`,
-          className: 'marker-cluster-custom',
-          iconSize: L.point(40, 40, true),
-        }); // old */
-      };
+      }; */
     
     const markers = data && data.allMxcSupernode.nodes.map(function (val, index) {
         return <Marker key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>
