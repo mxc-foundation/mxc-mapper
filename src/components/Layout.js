@@ -5,9 +5,12 @@ import { Helmet } from 'react-helmet';
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import mxc_logo from 'assets/images/MXC_Logo_Navy@2x.png';
 
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 import DropdownC from "./DropdownC";
+import RSwitch from "./RSwitch";
+
 //import Header from 'components/Header';
 //import Footer from 'components/Footer';
 
@@ -56,6 +59,21 @@ const Layout = ({ children, pageName }) => {
   const [expanded, setExpanded] = useState(false);
   const online = 9567;
   const offline = 57;
+
+  /* const [state, setState] = React.useState({
+    checked: props.on
+  });
+
+  React.useEffect(() => {
+    setState({checked: props.on})
+  }, [props.on])
+
+  const handleChange = name => event => {
+    setState({ ...state, [name]: event.target.checked });
+    
+    props.onSwitchChange(props.dvId, event.target.checked, event);
+  }; */
+
   return (
     <>
       <Helmet bodyAttributes={{ class: className }}>
@@ -64,7 +82,25 @@ const Layout = ({ children, pageName }) => {
       <div className="wrapper">
 
 
-        <main>{children}</main>
+        <main>
+        <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
+              <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
+                  <img src={mxc_logo} alt={'logo'}></img>
+              </div>
+          </div>
+          <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
+              <div style={{ display: 'flex', alignItems: 'center', padding: '15px 15px 10px 15px' }}>
+                  <RSwitch /* enableAll={false} */ />
+                  <span style={{ padding: '0px 16px'}}>Show Footprint</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', padding: '15px 15px 10px 15px' }}>
+                  <RSwitch /* enableAll={false} */ />
+                  <span style={{ padding: '0px 16px'}}>Coverage</span>
+              </div>
+          </div>
+          
+          {children}
+        </main>
         {/* <Footer /> */}
 
         <SideNav
@@ -84,9 +120,9 @@ const Layout = ({ children, pageName }) => {
               </NavText>
             </NavItem>
             <NavItem eventKey="home" style={localStyled.flexCenter} >
-              {/* <Select options={options} style={{height: 40}}/> */}
               <DropdownC />
             </NavItem>
+            
             <NavItem eventKey="charts">
               <NavText style={localStyled.total} >
                 9450
@@ -120,20 +156,21 @@ const Layout = ({ children, pageName }) => {
               <NavText>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label style={{ fontSize: '1rem' }}>
-                    <input type="checkbox" onChange={() => {}} ></input>
+                    <input type="checkbox" onChange={() => { }} ></input>
                     <span style={{ marginLeft: '0.5rem' }}>{"View All"}</span>
                   </label>
                   <label style={{ fontSize: '1rem' }}>
-                    <input type="checkbox" onChange={() => {}}></input>
+                    <input type="checkbox" onChange={() => { }}></input>
                     <span style={{ marginLeft: '0.5rem' }}>{`View online(${online})`}</span>
                   </label>
                   <label style={{ fontSize: '1rem' }}>
-                    <input type="checkbox" onChange={() => {}}></input>
+                    <input type="checkbox" onChange={() => { }}></input>
                     <span style={{ marginLeft: '0.5rem' }}>{`View offline(${offline})`}</span>
                   </label>
                 </div>
               </NavText>
             </NavItem>
+
           </SideNav.Nav>}
         </SideNav>
       </div>
@@ -142,7 +179,7 @@ const Layout = ({ children, pageName }) => {
 };
 
 Layout.propTypes = {
-        children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   pageName: PropTypes.string,
 };
 

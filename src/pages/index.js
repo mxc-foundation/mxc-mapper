@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
-import { Map, Marker } from 'react-leaflet';
-import { graphql } from "gatsby";
+import { Map } from 'react-leaflet';
+//import { graphql } from "gatsby";
 import FoundLocationMap from "../components/FoundLocationMap";
 import Layout from 'components/Layout';
 
@@ -43,7 +43,7 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage;
 
-export const query = graphql`
+/* export const query = graphql`
   query {
     allMxcSupernode {
     nodes {
@@ -57,4 +57,4 @@ export const query = graphql`
     totalCount
   }
 }
-`
+` */

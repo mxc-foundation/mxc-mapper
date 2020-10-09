@@ -1,3 +1,7 @@
-.leaflet-container {
+/* .leaflet-container {
     height: 1050px;
+} */
+
+.leaflet-control-container {
+    display: 'none';
 }

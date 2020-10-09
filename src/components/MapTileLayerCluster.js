@@ -9,7 +9,7 @@ import './leaflet.css'
 import styled from 'styled-components';
 //import GatewayStore from '../stores/GatewayStore';
 //import { GATEWAY_ICON, MAP_LAYER } from '../util/Data';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 
@@ -65,21 +65,15 @@ const MapTileLayerCluster = ({ crd }) => {
           html: `<span>${cluster.getChildCount()}</span>`,
           className: 'marker-cluster-custom',
           iconSize: L.point(40, 40, true),
-        }); */
+        }); // old */
       };
     
     const markers = data && data.allMxcSupernode.nodes.map(function (val, index) {
         return <Marker key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>
-    })  
-
-    /* return (
-        <Wrapper
-            width="100%" height='100%' id='map'
-        />
-    ); */
+    })
 
     return (<Wrapper>
-        <Map center={position} zoom={6} zoomControl={false}>
+        <Map center={position} zoom={6} zoomControl={false} style={{ width: "99vw", height: "99.7vh" }}>
             <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             detectRetina={true}
@@ -87,7 +81,7 @@ const MapTileLayerCluster = ({ crd }) => {
             maxNativeZoom={17}
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
-            
+            <ZoomControl position={'bottomleft'}/>
             {/* iconCreateFunction={createClusterCustomIcon} */}
             <MarkerClusterGroup showCoverageOnHover={true}>
                 {markers}
