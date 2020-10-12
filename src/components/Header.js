@@ -15,7 +15,7 @@ const Header = () => {
     <header>
       <Container type="content">
         <p>
-          <Link to="/">{companyName}</Link>
+          <Link to="/">{ companyName }</Link>
         </p>
         <ul>
           <li>
@@ -33,12 +33,12 @@ const Header = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              {languages.map((lng) => (
-                <Dropdown.Item href="#" key={lng} onClick={(e) => {
+              { languages.map(( lng ) => (
+                <Dropdown.Item href="#" key={lng} onClick={( e ) => {
                   e.preventDefault();
-                  changeLanguage(lng);
-                }} >{lng}</Dropdown.Item>
-              ))}
+                  changeLanguage( lng );
+                }} >{ lng }</Dropdown.Item>
+              )) }
             </Dropdown.Menu>
           </Dropdown>
         </ul>

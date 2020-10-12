@@ -20,9 +20,9 @@ import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 
 
 const Example = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState( false );
 
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggle = () => setDropdownOpen(( prevState ) => !prevState );
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} style={{ backgroundColor: '#98A6AD', fontWeight: 'bold', minWidth: 274, minHeight: 40, border: '1px solid #98A6AD', borderRadius: 5 }}>
@@ -48,6 +48,6 @@ const Example = () => {
       </DropdownMenu>
     </Dropdown>
   );
-}
+};
 
 export default Example;

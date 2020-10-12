@@ -41,17 +41,17 @@ const localStyled = {
     marginTop: 10,
     opacity: 1,
   }
-}
+};
 
 const Layout = ({ children, pageName, total }) => {
   let className = '';
 
-  if (pageName) {
+  if ( pageName ) {
     className = `${className} page-${pageName}`;
   }
   const { t } = useTranslation();
 
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState( true );
   //const online = 9567;
   //const offline = 57;
 
@@ -72,7 +72,7 @@ const Layout = ({ children, pageName, total }) => {
   return (
     <>
       <Helmet 
-        title={t('project')}
+        title={t( 'project' )}
         link={[
           {
             rel: 'icon',
@@ -85,12 +85,12 @@ const Layout = ({ children, pageName, total }) => {
 
       <div className="wrapper">
         <main>
-        <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
-              <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
-                  <img src={mxc_logo} alt={'logo'}></img>
-              </div>
+          <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
+              <img src={mxc_logo} alt={'logo'}></img>
+            </div>
           </div>
-          {/* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
+          { /* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
               <div style={{ display: 'flex', alignItems: 'center', padding: '15px 15px 10px 15px' }}>
                   <RSwitch />
                   <span style={{ padding: '0px 16px'}}>Show Footprint</span>
@@ -99,44 +99,44 @@ const Layout = ({ children, pageName, total }) => {
                   <RSwitch />
                   <span style={{ padding: '0px 16px'}}>Coverage</span>
               </div>
-          </div> */} {/* non-function */}
+          </div> */ } { /* non-function */ }
           
-          {children}
+          { children }
         </main>
-        {/* <Footer /> */}
+        { /* <Footer /> */ }
 
         <SideNav
           expanded={expanded}
-          onToggle={(expanded) => {
-            setExpanded(expanded);
+          onToggle={( expanded ) => {
+            setExpanded( expanded );
           }}
           /* onSelect={(selected) => {
             
           }} */
         >
           <SideNav.Toggle />
-          {expanded && <SideNav.Nav >
+          { expanded && <SideNav.Nav >
             <NavItem eventKey="title">
               <NavText style={localStyled.title}>
                 Welcome to MXC Mapper
               </NavText>
             </NavItem>
-            {/* <NavItem eventKey="home" style={localStyled.flexCenter} >
+            { /* <NavItem eventKey="home" style={localStyled.flexCenter} >
               <DropdownC />
-            </NavItem> */}{/* non-function */}
+            </NavItem> */ }{ /* non-function */ }
             
             <NavItem eventKey="charts">
               <NavText style={localStyled.total} >
-                {total}
+                { total }
               </NavText>
             </NavItem>
             <NavItem eventKey="gate">
               <NavText style={localStyled.flexCenter} >
                 Gateways
-                  </NavText>
+              </NavText>
             </NavItem>
 
-            {/* <NavItem eventKey="totAmount" style={{ padding: '0px 16px' }}>
+            { /* <NavItem eventKey="totAmount" style={{ padding: '0px 16px' }}>
               <NavText>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 16 }}>
                   <span>Total Amount :</span>
@@ -152,9 +152,9 @@ const Layout = ({ children, pageName, total }) => {
                   <span>453.34 MXC</span>
                 </div>
               </NavText>
-            </NavItem> */}{/* non-function */}
+            </NavItem> */ }{ /* non-function */ }
 
-            {/* <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
+            { /* <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
               <NavText>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label style={{ fontSize: '1rem' }}>
@@ -171,9 +171,9 @@ const Layout = ({ children, pageName, total }) => {
                   </label>
                 </div>
               </NavText>
-            </NavItem> */}{/* non-function */}
+            </NavItem> */ }{ /* non-function */ }
 
-          </SideNav.Nav>}
+          </SideNav.Nav> }
         </SideNav>
       </div>
     </>

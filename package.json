@@ -4,9 +4,9 @@
   "description": "Gateways and supernodes info",
   "version": "0.2.4",
   "author": {
-    "name": "Colby Fayock",
-    "email": "hello@colbyfayock.com",
-    "url": "https://twitter.com/colbyfayock"
+    "name": "MXC Foundation",
+    "email": "hello@mxc.org",
+    "url": "https://www.mxc.org"
   },
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.5.0",
@@ -21,7 +21,7 @@
     "gatsby-plugin-sass": "^2.3.10",
     "gatsby-source-filesystem": "^2.3.18",
     "gatsby-source-graphql": "^2.6.1",
-    "gatsby-source-mxc-supernode": "^2.0.1",
+    "gatsby-source-mxc-supernode": "^3.0.0",
     "gatsby-source-strapi": "0.0.12",
     "i18next": "^19.6.3",
     "leaflet": "^1.6.0",

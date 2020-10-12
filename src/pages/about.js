@@ -12,7 +12,7 @@ const SecondPage = () => {
   return (
     <Layout pageName="about">
       <Helmet>
-        <title>{t('About')}</title>
+        <title>{ t( 'About' ) }</title>
       </Helmet>
       <Container type="content">
         <h1><Trans>About</Trans></h1>

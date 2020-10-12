@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import Switch from "react-switch";
+import React, { Component } from 'react';
+import Switch from 'react-switch';
  
 class RSwitch extends Component {
   constructor() {
     super();
     this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind( this );
   }
  
-  handleChange(checked) {
+  handleChange( checked ) {
     //this.props.enableAll;
     this.setState({ checked });
-    this.props.all(checked);
+    this.props.all( checked );
   }
  
   render() {
