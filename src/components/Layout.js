@@ -34,6 +34,7 @@ const localStyled = {
     justifyContent: 'center',
     textAlign: 'left',
     fontSize: 20,
+    padding: '0px 30px',
     font: 'normal normal medium 60px/71px Roboto',
     letterSpacing: 0,
     color: 'white',
