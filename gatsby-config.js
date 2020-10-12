@@ -31,7 +31,7 @@ module.exports = {
         name: siteMetadata.companyName,
         short_name: siteMetadata.companyName,
         start_url: '/',
-        icon: 'src/assets/images/react-leaflet-icon.png',
+        icon: 'src/assets/images/favicon.png',
       },
     },
     {

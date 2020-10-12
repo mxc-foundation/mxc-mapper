@@ -1,7 +1,4 @@
 import React from 'react';
-import Favicon from 'react-favicon';
-import { Helmet } from 'react-helmet';
-import { /* Trans ,*/ useTranslation } from 'gatsby-plugin-react-i18next';
 import { Map } from 'react-leaflet';
 import { graphql } from "gatsby";
 import FoundLocationMap from "../components/FoundLocationMap";
@@ -15,7 +12,6 @@ import Snippet from 'components/Snippet'; */
 
 const IndexPage = ({ data }) => {
   //const markerRef = useRef();
-  const { t } = useTranslation();
   
   let position = [];
   position = [51, 13];
@@ -27,11 +23,6 @@ const IndexPage = ({ data }) => {
   
   return (
     <Layout pageName="home" total={total}>
-      <Favicon url="http://oflisback.github.io/react-favicon/public/img/github.ico" />
-      <Helmet>
-        <title>{t('project')}</title>
-      </Helmet>
-
       <Map center={position} zoom={6} className="map-container" animate={true} scrollWheelZoom={false}>
           <FoundLocationMap />
       </Map>

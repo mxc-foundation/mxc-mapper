@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import { /* Trans ,*/ useTranslation } from 'gatsby-plugin-react-i18next';
 
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
@@ -47,6 +48,7 @@ const Layout = ({ children, pageName, total }) => {
   if (pageName) {
     className = `${className} page-${pageName}`;
   }
+  const { t } = useTranslation();
 
   const [expanded, setExpanded] = useState(true);
   //const online = 9567;
@@ -68,12 +70,19 @@ const Layout = ({ children, pageName, total }) => {
 
   return (
     <>
-      <Helmet bodyAttributes={{ class: className }}>
-        <title>Gatsby Site</title>
+      <Helmet 
+        title={t('project')}
+        link={[
+          {
+            rel: 'icon',
+            type: 'image/png',
+            href: 'favicon.png'
+          }
+        ]}
+        bodyAttributes={{ class: className }}>
       </Helmet>
+
       <div className="wrapper">
-
-
         <main>
         <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
