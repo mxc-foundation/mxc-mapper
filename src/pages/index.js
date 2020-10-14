@@ -9,6 +9,14 @@ import Layout from 'components/Layout';
 import Map from 'components/Map';
 import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
 
+
+import 'leaflet.markercluster/dist/leaflet.markercluster.js';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import 'leaflet/dist/leaflet.css';
+import '../components/map.styles.css';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+
 const LOCATION = {
   lat: 38.9072,
   lng: -77.0369,
@@ -64,8 +72,8 @@ const IndexPage = ({ data }) => {
     const { leafletElement: marker } = current;
 
     marker.setLatLng(location);
-    popup.setLatLng(location);
-    popup.setContent(popupContentHello);
+    //popup.setLatLng(location);
+    //popup.setContent(popupContentHello);
 
     setTimeout(async () => {
       await promiseToFlyTo(leafletElement, {
@@ -75,10 +83,14 @@ const IndexPage = ({ data }) => {
 
       marker.bindPopup(popup);
 
-      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
-      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom);
+      /* setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
+      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom); */
     }, timeToZoom);
   }
+
+  const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
+    return <Marker ref={markerRef} key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>;
+  });
 
   const mapSettings = {
     center: CENTER,
@@ -89,12 +101,9 @@ const IndexPage = ({ data }) => {
   };
   return (
     <Layout pageName="home" total={total}>
-      {/* <Map center={position} zoom={6} className="map-container" animate={true} scrollWheelZoom={false}>
-        <FoundLocationMap />
-      </Map> */}
-
       <Map {...mapSettings} style={{ width: '100%', height: '100vw' }}>
-        <Marker ref={markerRef} position={CENTER} />
+        {/* <Marker ref={markerRef} position={CENTER} /> */}
+        {markers}
       </Map>
       { /* <Container type="content" className="text-center home-start">
 
