@@ -1,32 +1,101 @@
-import React from 'react';
-import { Map } from 'react-leaflet';
-import { graphql } from 'gatsby';
-import FoundLocationMap from '../components/FoundLocationMap';
-import Layout from 'components/Layout';
-
-/* import { promiseToFlyTo, getCurrentLocation } from 'lib/map';
+import React, { useRef } from 'react';
 import L from 'leaflet';
-import Container from 'components/Container';
-import Snippet from 'components/Snippet'; */
-//import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
+import { Marker } from 'react-leaflet';
+import { graphql } from 'gatsby';
+//import FoundLocationMap from '../components/FoundLocationMap';
 
+import { promiseToFlyTo, getCurrentLocation } from 'lib/map';
+import Layout from 'components/Layout';
+import Map from 'components/Map';
+import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
+
+const LOCATION = {
+  lat: 38.9072,
+  lng: -77.0369,
+};
+const CENTER = [LOCATION.lat, LOCATION.lng];
+const DEFAULT_ZOOM = 2;
+const MAX_ZOOM = 13;
+const ZOOM = 10;
+
+const timeToZoom = 2000;
+const timeToOpenPopupAfterZoom = 4000;
+const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
+
+const popupContentHello = `<p>Hello 👋</p>`;
+const popupContentGatsby = `
+  <div class="popup-gatsby">
+    <div class="popup-gatsby-image">
+      <img class="gatsby-astronaut" src=${gatsby_astronaut} />
+    </div>
+    <div class="popup-gatsby-content">
+      <h1>Gatsby Leaflet Starter</h1>
+      <p>Welcome to your new Gatsby site. Now go build something great!</p>
+    </div>
+  </div>
+ `;
 const IndexPage = ({ data }) => {
-  //const markerRef = useRef();
-  
-  let position = [];
-  position = [51, 13];
+  const markerRef = useRef();
+
+  /* let position = [];
+  position = [51, 13]; */
 
   let total = 0;
-  if( data ){
+  if (data) {
     total = data.allMxcSupernode.totalCount;
   }
-  
+
+  /**
+   * mapEffect
+   * @description Fires a callback once the page renders
+   * @example Here this is and example of being used to zoom in and set a popup on load
+   */
+
+  async function mapEffect({ leafletElement } = {}) {
+    if (!leafletElement) return;
+
+    const popup = L.popup({
+      maxWidth: 800,
+    });
+
+    const location = await getCurrentLocation().catch(() => LOCATION);
+
+    const { current = {} } = markerRef || {};
+    const { leafletElement: marker } = current;
+
+    marker.setLatLng(location);
+    popup.setLatLng(location);
+    popup.setContent(popupContentHello);
+
+    setTimeout(async () => {
+      await promiseToFlyTo(leafletElement, {
+        zoom: ZOOM,
+        center: location,
+      });
+
+      marker.bindPopup(popup);
+
+      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
+      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom);
+    }, timeToZoom);
+  }
+
+  const mapSettings = {
+    center: CENTER,
+    defaultBaseMap: 'Mapbox',
+    zoom: DEFAULT_ZOOM,
+    maxZoom: MAX_ZOOM, 
+    mapEffect
+  };
   return (
     <Layout pageName="home" total={total}>
-      <Map center={position} zoom={6} className="map-container" animate={true} scrollWheelZoom={false}>
+      {/* <Map center={position} zoom={6} className="map-container" animate={true} scrollWheelZoom={false}>
         <FoundLocationMap />
-      </Map>
+      </Map> */}
 
+      <Map {...mapSettings} style={{ width: '100%', height: '100vw' }}>
+        <Marker ref={markerRef} position={CENTER} />
+      </Map>
       { /* <Container type="content" className="text-center home-start">
 
         <h2><Trans>Still Getting Started?</Trans></h2>
