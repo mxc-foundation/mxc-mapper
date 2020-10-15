@@ -1,0 +1,15 @@
+{
+    "project": "MXC 地圖",
+    "Hello": "你好！",
+    "Still Getting Started?": "還是入門？",
+    "Starter": "起动机",
+    "Welcome to your new Gatsby site. Now go build something great!": "歡迎來到您的新蓋茨比網站。 現在去建造一些很棒的東西！",
+    "Run the following in your terminal!": "在終端中運行以下命令！",
+    "Github": "Github",
+    "About": "關於",
+    "View on Github": "在Github上查看",  
+    "Created By": "由...製作",
+    "Note: Gatsby CLI required globally for the above command": "注意：以上命令全局需要Gatsby CLI",
+    "MXC Foundation": "MXC Foundation",
+    "Gateways and supernodes info": "網關和超節點信息"
+}

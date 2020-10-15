@@ -1,0 +1,20 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": ["eslint:recommended", "react-app", "airbnb", "eslint-config-prettier"],
+    "rules": {
+        "strict": ["error", "never"],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prop-types": 0,
+        "react/jsx-props-no-spreading": 0,
+        "import/no-named-as-default": 0
+    },
+    "env": {
+        "browser": true
+    }
+}

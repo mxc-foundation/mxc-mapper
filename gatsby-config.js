@@ -31,8 +31,32 @@ module.exports = {
         name: siteMetadata.companyName,
         short_name: siteMetadata.companyName,
         start_url: '/',
-        icon: 'src/assets/images/react-leaflet-icon.png',
+        icon: 'src/assets/images/favicon.png',
       },
+    },
+    {
+      resolve: `gatsby-source-mxc-supernode`,
+      options: {
+        supernode: [`https://lora.supernode.matchx.io`,`https://lora.hunanhuaweikeji.com`,'https://mxcxy.com','https://lora.rosanetworks.com','https://k-supernode.com'],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        path: `${__dirname}/locales`,
+        languages: [`en`, `hans`, `hant`, `ko`],
+        defaultLanguage: `en`,
+  
+        // you can pass any i18next options
+        // pass following options to allow message content as a key
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false // not needed for react as it escapes by default
+          },
+          keySeparator: false,
+          nsSeparator: false
+        }
+      }
     },
   ],
 };

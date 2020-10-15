@@ -19,6 +19,22 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: unset !important;
+  right: 0 !important;
+  z-index: 1006;
+  min-width: 64px !important;
+  background: #050319 !important;
+  -webkit-transition: min-width 0.2s;
+  -moz-transition: min-width 0.2s;
+  -o-transition: min-width 0.2s;
+  -ms-transition: min-width 0.2s;
+  transition: min-width 0.2s;
+} 
+
 main {
   padding: 2em 0;
 }
