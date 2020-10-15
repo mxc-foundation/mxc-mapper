@@ -18,7 +18,7 @@ import '../components/map.styles.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 const LOCATION = {
-  lat: 52.5200,
+  lat: 52.1200,
   lng: 13.4050,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
