@@ -2,6 +2,10 @@ const config = require( './package.json' );
 
 const { title, description, author, repository, homepage } = config;
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const siteMetadata = {
   companyName: title,
   companyUrl: repository.url,

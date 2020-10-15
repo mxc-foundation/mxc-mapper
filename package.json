@@ -50,6 +50,7 @@
     "babel-jest": "^26.1.0",
     "babel-preset-gatsby": "^0.5.1",
     "cypress": "^4.11.0",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.4.0",
     "eslint-config-zurgbot": "^0.0.7",
@@ -90,7 +91,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   },
   "lint-staged": {
