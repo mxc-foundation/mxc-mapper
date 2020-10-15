@@ -18,12 +18,13 @@ import '../components/map.styles.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 const LOCATION = {
-  lat: 38.9072,
-  lng: -77.0369,
+  lat: 52.5200,
+  lng: 13.4050,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 2;
+const DEFAULT_ZOOM = 10;
 const MAX_ZOOM = 13;
+const MIN_ZOOM = 3;
 const ZOOM = 10;
 
 const timeToZoom = 2000;
@@ -75,7 +76,7 @@ const IndexPage = ({ data }) => {
     //popup.setLatLng(location);
     //popup.setContent(popupContentHello);
 
-    setTimeout(async () => {
+    /* setTimeout(async () => {
       await promiseToFlyTo(leafletElement, {
         zoom: ZOOM,
         center: location,
@@ -83,9 +84,9 @@ const IndexPage = ({ data }) => {
 
       marker.bindPopup(popup);
 
-      /* setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
-      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom); */
-    }, timeToZoom);
+      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
+      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom); 
+    }, timeToZoom); */
   }
 
   const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
@@ -97,22 +98,16 @@ const IndexPage = ({ data }) => {
     defaultBaseMap: 'Mapbox',
     zoom: DEFAULT_ZOOM,
     maxZoom: MAX_ZOOM, 
+    minZoom: MIN_ZOOM,
     mapEffect
   };
   return (
     <Layout pageName="home" total={total}>
-      <Map {...mapSettings} style={{ width: '100%', height: '100vw' }}>
-        {/* <Marker ref={markerRef} position={CENTER} /> */}
-        {markers}
+      <Map {...mapSettings}  >
+        <MarkerClusterGroup showCoverageOnHover={true}>
+        { markers }
+        </MarkerClusterGroup>
       </Map>
-      { /* <Container type="content" className="text-center home-start">
-
-        <h2><Trans>Still Getting Started?</Trans></h2>
-        <p><Trans>Run the following in your terminal!</Trans></p>
-        <Snippet>gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet</Snippet>
-        <p className="note"><Trans>Note: Gatsby CLI required globally for the above command</Trans></p>
-        
-      </Container> */ }
     </Layout>
   );
 };

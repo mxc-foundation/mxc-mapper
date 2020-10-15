@@ -5,3 +5,29 @@
 /* .leaflet-top.leaflet-left {
     display: none;
 } */
+
+.marker-cluster-small {
+    color: white;
+    background-color: #09006E;
+}
+.marker-cluster-small div {
+    color: white;
+    background-color: #09006E;
+}
+.marker-cluster-medium {
+    color: white;
+    background-color: #09006E;
+}
+.marker-cluster-medium div {
+    color: white;
+    background-color: #09006E;
+}
+    
+.marker-cluster-large {
+    color: white;
+    background-color: #09006E;
+}
+.marker-cluster-large div {
+    color: white;
+    background-color: #09006E;
+}
