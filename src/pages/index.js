@@ -43,6 +43,13 @@ const popupContentGatsby = `
     </div>
   </div>
  `;
+
+ const generateRandomLoc = () => {
+  const random = new Random(); 
+  const value = random.integer(1, 100);
+  return value / 10000 + 0.01;
+ }
+
 const IndexPage = ({ data }) => {
   const markerRef = useRef();
 
@@ -62,6 +69,7 @@ const IndexPage = ({ data }) => {
 
   async function mapEffect({ leafletElement } = {}) {
     if (!leafletElement) return;
+    if (!data) return; 
 
     const popup = L.popup({
       maxWidth: 800,
@@ -90,7 +98,7 @@ const IndexPage = ({ data }) => {
   }
 
   const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
-    return <Marker ref={markerRef} key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>;
+    return <Marker ref={markerRef} key={val.id} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
   });
 
   const mapSettings = {
@@ -105,7 +113,7 @@ const IndexPage = ({ data }) => {
     <Layout pageName="home" total={total}>
       <Map {...mapSettings}  >
         <MarkerClusterGroup showCoverageOnHover={true}>
-        { markers }
+         { markers }
         </MarkerClusterGroup>
       </Map>
     </Layout>
