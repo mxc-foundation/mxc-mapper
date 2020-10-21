@@ -41,7 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-source-mxc-supernode`,
       options: {
-        supernode: [`https://lora.supernode.matchx.io`,`https://lora.hunanhuaweikeji.com`,'https://mxcxy.com','https://lora.rosanetworks.com','https://k-supernode.com'],
+        supernode: ['https://lora.supernode.matchx.io','https://lora.hunanhuaweikeji.com','https://mxcxy.com','https://lora.rosanetworks.com','https://k-supernode.com'],
       },
     },
     {

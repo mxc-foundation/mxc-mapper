@@ -132,7 +132,7 @@ const Layout = ({ children, pageName, total }) => {
             </NavItem>
             <NavItem eventKey="gate">
               <NavText style={localStyled.flexCenter} >
-                Gateways
+              M2 Pro Miners
               </NavText>
             </NavItem>
 
