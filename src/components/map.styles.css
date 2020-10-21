@@ -5,7 +5,10 @@
 /* .leaflet-top.leaflet-left {
     display: none;
 } */
-
+.leaflet-div-icon {
+    background-color: unset;
+    border: unset;
+}
 .marker-cluster-small {
     color: white;
     background-color: #09006E;

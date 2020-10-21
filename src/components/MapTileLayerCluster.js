@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+//import { useStaticQuery, graphql } from 'gatsby';
 //import L from 'leaflet';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `; */
 
 const MapTileLayerCluster = ({ crd }) => {
-  const data = useStaticQuery( graphql`
+  /* const data = useStaticQuery( graphql`
     query {
       allMxcSupernode {
       nodes {
@@ -39,7 +39,7 @@ const MapTileLayerCluster = ({ crd }) => {
       totalCount
     }
   }
-  ` );
+  ` ); */
 
 
   let lat = '51.1657';
@@ -63,9 +63,9 @@ const MapTileLayerCluster = ({ crd }) => {
         });
       }; */
     
-  const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
+  /* const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
     return <Marker key={val.id} position={[val.location.latitude, val.location.longitude]}></Marker>;
-  });
+  }); */
 
   return ( <Wrapper>
     <Map center={position} zoom={6} zoomControl={false} style={{ width: '99vw', height: '99.7vh' }}>
@@ -78,9 +78,10 @@ const MapTileLayerCluster = ({ crd }) => {
       />
       <ZoomControl position={'bottomleft'}/>
       { /* iconCreateFunction={createClusterCustomIcon} */ }
-      <MarkerClusterGroup showCoverageOnHover={true}>
+      
+      {/* <MarkerClusterGroup showCoverageOnHover={true}>
         { markers }
-      </MarkerClusterGroup>
+      </MarkerClusterGroup> */}
     </Map>
   </Wrapper> );
 };
