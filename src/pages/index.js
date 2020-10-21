@@ -104,7 +104,7 @@ const IndexPage = ({ data }) => {
       shadowSize: null,
       shadowAnchor: null,
       iconSize: [30, 30],
-      className: 'leaflet-div-icon'
+      //className: 'leaflet-div-icon'
     });
   }
 
