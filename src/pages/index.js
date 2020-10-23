@@ -54,10 +54,13 @@ const popupContentGatsby = `
 const IndexPage = ({ data }) => {
   const markerRef = useRef();
   let total = 0;
+  let lwpan_total = 0;
   if (data) {
     total = data.allMxcSupernode.totalCount;
+    lwpan_total = data.allLpwanGateways.totalCount;
   }
 
+console.log('index', data);
   /**
    * mapEffect
    * @description Fires a callback once the page renders
@@ -108,8 +111,12 @@ const IndexPage = ({ data }) => {
     });
   }
 
-  const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
-    return <Marker ref={markerRef} key={val.id} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
+  /* const markers = data && data.allMxcSupernode.nodes.map( function ( val, index ) {
+    return <Marker ref={markerRef} key={index} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
+  }); */ 
+
+  const markers2 = data && data.allLpwanGateways.nodes.map( function ( val, index  ) {
+    return <Marker ref={markerRef} key={index} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
   });
 
   const mapSettings = {
@@ -118,13 +125,15 @@ const IndexPage = ({ data }) => {
     zoom: DEFAULT_ZOOM,
     maxZoom: MAX_ZOOM, 
     minZoom: MIN_ZOOM,
+    preferCanvas:true,
     mapEffect
   };
   return (
     <Layout pageName="home" total={total}>
       <Map {...mapSettings}  >
         <MarkerClusterGroup showCoverageOnHover={true}>
-         { markers }
+         {/* { markers } */}
+         { markers2 }
         </MarkerClusterGroup>
       </Map>
     </Layout>
@@ -145,6 +154,19 @@ export const query = graphql`
       id
     }
     totalCount
+  },
+  mxcSupernode {
+    id
+  }
+  allLpwanGateways {
+    totalCount
+    nodes {
+      location {
+        altitude
+        latitude
+        longitude
+      }
+    }
   }
 }
 `;
