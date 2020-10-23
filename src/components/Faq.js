@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import ReactMarkdown from "react-markdown";
 
 const Faq = () => {
   const data = useStaticQuery(graphql`
@@ -19,7 +20,7 @@ const Faq = () => {
     <div className="bg-white">
       <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-          MXC Mapper Frequently Asked Questions
+          MXC MAPPER FAQ
         </h2>
 
         {questions.map((question) => {
@@ -35,7 +36,7 @@ const Faq = () => {
                   </dt>
                   <dd className="mt-2 md:mt-0 md:col-span-7">
                     <p className="text-base leading-6 text-gray-900">
-                      {question.Answer}
+                      <ReactMarkdown source={question.Answer} />
                     </p>
                   </dd>
                 </div>

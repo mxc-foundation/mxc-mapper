@@ -29,8 +29,8 @@ module.exports = {
         queryLimit: 1000, // Default to 100
         contentTypes: [`mapper-faq`],
         loginData: {
-          identifier: `OPIokVuJtqS3llOhWdlGrsUG88`,
-          password: `qNVjJfV95P5I51HJS1cQviI6Q3`,
+          identifier: `${process.env.STRAPI_USER}`,
+          password: `${process.env.STRAPI_PASSWORD}`,
         },
       },
     },
