@@ -60,6 +60,7 @@ const IndexPage = ({ data }) => {
     lwpan_total = data.allLpwanGateways.totalCount;
   }
 
+console.log('index', data);
   /**
    * mapEffect
    * @description Fires a callback once the page renders
@@ -80,10 +81,22 @@ const IndexPage = ({ data }) => {
     const { leafletElement: marker } = current;
 
     marker.setLatLng(location);
+    //popup.setLatLng(location);
+    //popup.setContent(popupContentHello);
+
+    /* setTimeout(async () => {
+      await promiseToFlyTo(leafletElement, {
+        zoom: ZOOM,
+        center: location,
+      });
+
+      marker.bindPopup(popup);
+
+      setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
+      setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom); 
+    }, timeToZoom); */
   }
-  
   let markerIcon = null; 
-  let markerIcon2 = null; 
   if (typeof window !== 'undefined') {
     markerIcon = new Icon({
       iconUrl: require('../assets/images/diconActive.svg'),
@@ -94,25 +107,16 @@ const IndexPage = ({ data }) => {
       shadowSize: null,
       shadowAnchor: null,
       iconSize: [30, 30],
-    });
-    markerIcon2 = new Icon({
-      iconUrl: require('../assets/images/diconInactive.svg'),
-      iconRetinaUrl: require('../assets/images/diconInactive.svg'),
-      iconAnchor: null,
-      popupAnchor: null,
-      shadowUrl: null,
-      shadowSize: null,
-      shadowAnchor: null,
-      iconSize: [30, 30],
+      //className: 'leaflet-div-icon'
     });
   }
 
-  const markers = data && data.allMxcSupernode.nodes.map( function ( val, index ) {
+  /* const markers = data && data.allMxcSupernode.nodes.map( function ( val, index ) {
     return <Marker ref={markerRef} key={index} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
-  });
+  }); */ 
 
   const markers2 = data && data.allLpwanGateways.nodes.map( function ( val, index  ) {
-    return <Marker ref={markerRef} key={index} icon={(!!markerIcon2) ? markerIcon2 : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
+    return <Marker ref={markerRef} key={index} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
   });
   
   const mapSettings = {
@@ -124,9 +128,8 @@ const IndexPage = ({ data }) => {
     preferCanvas:true,
     mapEffect
   };
-
   return (
-    <Layout pageName="home" total={total} lpwanTotal={lwpan_total}>
+    <Layout pageName="home" total={total}>
       <Map {...mapSettings}  >
         <MarkerClusterGroup showCoverageOnHover={true}>
          {/* { markers } */}

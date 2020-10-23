@@ -29,6 +29,17 @@ const localStyled = {
     marginTop: 38,
     opacity: 1,
   },
+  LpwanTotal: {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'left',
+    fontSize: 30,
+    font: 'normal normal medium 60px/71px Roboto',
+    letterSpacing: 0,
+    color: '#FFFFFF',
+    marginTop: 16,
+    opacity: 1,
+  },
   title: {
     display: 'flex',
     justifyContent: 'center',
@@ -43,7 +54,7 @@ const localStyled = {
   }
 };
 
-const Layout = ({ children, pageName, total }) => {
+const Layout = ({ children, pageName, total, lpwanTotal }) => {
   let className = '';
 
   if ( pageName ) {
@@ -133,6 +144,16 @@ const Layout = ({ children, pageName, total }) => {
             <NavItem eventKey="gate">
               <NavText style={localStyled.flexCenter} >
               M2 Pro Miners
+              </NavText>
+            </NavItem>
+            <NavItem eventKey="charts">
+              <NavText style={localStyled.LpwanTotal} >
+                { lpwanTotal }
+              </NavText>
+            </NavItem>
+            <NavItem eventKey="gate">
+              <NavText style={localStyled.flexCenter} >
+              LPWAN Gateway
               </NavText>
             </NavItem>
 

@@ -46,7 +46,7 @@ const Map = ( props ) => {
 
   return (
     <div className={mapClassName}>
-      <BaseMap ref={mapRef} {...mapSettings}>
+      <BaseMap ref={mapRef} {...mapSettings} preferCanvas={true}>
         { children }
         { basemap && <TileLayer {...basemap} /> }
         <ZoomControl position={'bottomleft'} />
