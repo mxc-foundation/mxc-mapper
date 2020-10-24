@@ -9,7 +9,7 @@
     background-color: unset;
     border: unset;
 }
-.marker-cluster-small {
+/* .marker-cluster-small {
     color: white;
     background-color: #09006E;
 }
@@ -33,4 +33,22 @@
 .marker-cluster-large div {
     color: white;
     background-color: #09006E;
+} */
+
+.background-color-miners {
+    color:white;
+    background-color:#09006E;
+}
+.background-color-miners div {
+    color:white;
+    background-color:#09006E;
+}
+
+.background-color-lpwan {
+    color:white;
+    background-color: #98A6AD;
+}
+.background-color-lpwan div {
+    color:white;
+    background-color: #98A6AD;
 }

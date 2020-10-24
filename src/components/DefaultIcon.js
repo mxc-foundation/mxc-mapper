@@ -12,4 +12,4 @@ const DefaultIcon = ''/* new L.Icon({
     className: 'leaflet-div-icon'
 }) */;
 
-export { DefaultIcon };
+export { DefaultIcon };ga
