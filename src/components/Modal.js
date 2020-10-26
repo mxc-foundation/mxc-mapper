@@ -18,7 +18,7 @@ const ModalFAQ = (props) => {
     <div>
       <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} fade={false} toggle={toggle} className={className} size="lg">
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle} style={{borderBottom: 'unset'}}/>
         <ModalBody>
           <Faq />
         </ModalBody>

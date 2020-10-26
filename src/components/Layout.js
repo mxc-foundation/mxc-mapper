@@ -7,7 +7,7 @@ import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import mxc_logo from 'assets/images/MXC_Logo_Navy@2x.png';
+import mxcLogo from 'assets/images/MXC_Logo_Navy.png';
 import ModalFAQ from './Modal';
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 //import DropdownC from "./DropdownC";
@@ -104,7 +104,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
         <main>
           <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
-              <img src={mxc_logo} alt={'logo'}></img>
+              <img src={mxcLogo} alt='logo' style={{height: 48}} />
             </div>
           </div>
           { /* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
