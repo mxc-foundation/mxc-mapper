@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { /* Trans ,*/ useTranslation } from 'gatsby-plugin-react-i18next';
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import mxc_logo from 'assets/images/MXC_Logo_Navy@2x.png';
-
+import ModalFAQ from './Modal';
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 //import DropdownC from "./DropdownC";
 //import RSwitch from "./RSwitch";
@@ -17,6 +18,11 @@ const localStyled = {
   flexCenter: {
     display: 'flex',
     justifyContent: 'center',
+  },
+  flexCenterFAQ: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: 30 
   },
   total: {
     display: 'flex',
@@ -193,7 +199,12 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
                 </div>
               </NavText>
             </NavItem> */ }{ /* non-function */ }
-
+            <NavItem eventKey="faq">
+              <NavText style={localStyled.flexCenterFAQ} >
+              {/* <Link to="/faq/"><Trans>FAQ</Trans></Link> */}
+                <ModalFAQ buttonLabel={"FAQ"}/>
+              </NavText>
+            </NavItem>
           </SideNav.Nav> }
         </SideNav>
       </div>

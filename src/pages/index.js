@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import L from 'leaflet';
 import { Marker } from 'react-leaflet';
 import { graphql } from 'gatsby';
-//import FoundLocationMap from '../components/FoundLocationMap';
+/* import FoundLocationMap from '../components/FoundLocationMap'; */
 
-import { promiseToFlyTo, getCurrentLocation } from 'lib/map';
+import { getCurrentLocation } from 'lib/map';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
-import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
+/* import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg'; */
 import { Icon } from 'leaflet/src/layer/marker'
 import { Random } from 'random-js';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
@@ -16,7 +16,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet/dist/leaflet.css';
 import '../components/map.styles.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-//import {DefaultIcon} from '../components/DefaultIcon'; 
+/* import {DefaultIcon} from '../components/DefaultIcon';  */
 
 const LOCATION = {
   lat: 52.1200,
@@ -26,7 +26,7 @@ const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 10;
 const MAX_ZOOM = 13;
 const MIN_ZOOM = 3;
-const ZOOM = 10;
+/* const ZOOM = 10;
 
 const timeToZoom = 2000;
 const timeToOpenPopupAfterZoom = 4000;
@@ -43,7 +43,7 @@ const popupContentGatsby = `
       <p>Welcome to your new Gatsby site. Now go build something great!</p>
     </div>
   </div>
- `;
+ `; */
 
  const generateRandomLoc = () => {
   const random = new Random(); 
@@ -56,9 +56,9 @@ const popupContentGatsby = `
  * @see https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542
  */
 function createDefaultClusterMarker(cluster, additionalClasses = '') {
-  var childCount = cluster.getChildCount();
+  const childCount = cluster.getChildCount();
 
-  var c = ' marker-cluster-';
+  let c = ' marker-cluster-';
   if (childCount < 10) {
     c += 'small';
   } else if (childCount < 100) {
@@ -83,10 +83,10 @@ function createLp1ClusterMarker(cluster) {
 const IndexPage = ({ data }) => {
   const markerRef = useRef();
   let total = 0;
-  let lwpan_total = 0;
+  let lwpanTotal = 0;
   if (data) {
     total = data.allMxcSupernode.totalCount;
-    lwpan_total = data.allLpwanGateways.totalCount;
+    lwpanTotal = data.allLpwanGateways.totalCount;
   }
 
   /**
@@ -99,9 +99,9 @@ const IndexPage = ({ data }) => {
     if (!leafletElement) return;
     if (!data) return; 
 
-    const popup = L.popup({
+    /* const popup = L.popup({
       maxWidth: 800,
-    });
+    }); */
 
     const location = await getCurrentLocation().catch(() => LOCATION);
 
@@ -162,7 +162,7 @@ const IndexPage = ({ data }) => {
   const maxClusterRadius = 80; // default = 80px
 
   return (
-    <Layout pageName="home" total={total} lpwanTotal={lwpan_total}>
+    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal}>
       <Map {...mapSettings}  >
         <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius ={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
          { markers }

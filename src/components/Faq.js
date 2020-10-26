@@ -15,7 +15,6 @@ const Faq = () => {
   `);
   const questions = data.allStrapiMapperFaq.nodes;
 
-  console.log(questions);
   return (
     <div className="bg-white">
       <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">

@@ -9,7 +9,7 @@ import Container from "../components/Container";
 const FaqPage = () => {
   const { t } = useTranslation();
   return (
-    <Layout pageName="about">
+    <Layout pageName="faq">
       <Helmet>
         <title>{t("MXC Mapper FAQ")}</title>
       </Helmet>
