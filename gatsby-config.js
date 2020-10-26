@@ -17,8 +17,8 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
-    `gatsby-plugin-emotion`,
-    `gatsby-plugin-postcss`,
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-postcss",
     "gatsby-plugin-resolve-src",
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
