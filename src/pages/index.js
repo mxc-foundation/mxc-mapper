@@ -8,7 +8,7 @@ import { promiseToFlyTo, getCurrentLocation } from 'lib/map';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
 import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg';
-
+import { Icon } from 'leaflet/src/layer/marker'
 import { Random } from 'random-js';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
@@ -16,7 +16,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet/dist/leaflet.css';
 import '../components/map.styles.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-import {DefaultIcon} from '../components/DefaultIcon'; 
+//import {DefaultIcon} from '../components/DefaultIcon'; 
 
 const LOCATION = {
   lat: 52.1200,
@@ -93,9 +93,23 @@ const IndexPage = ({ data }) => {
       setTimeout(() => marker.setPopupContent(popupContentGatsby), timeToUpdatePopupAfterZoom); 
     }, timeToZoom); */
   }
+  let markerIcon = null; 
+  if (typeof window !== 'undefined') {
+    markerIcon = new Icon({
+      iconUrl: require('../assets/images/diconActive.svg'),
+      iconRetinaUrl: require('../assets/images/diconActive.svg'),
+      iconAnchor: null,
+      popupAnchor: null,
+      shadowUrl: null,
+      shadowSize: null,
+      shadowAnchor: null,
+      iconSize: [30, 30],
+      //className: 'leaflet-div-icon'
+    });
+  }
 
   const markers = data && data.allMxcSupernode.nodes.map( function ( val ) {
-    return <Marker ref={markerRef} key={val.id} icon={ DefaultIcon } position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
+    return <Marker ref={markerRef} key={val.id} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
   });
 
   const mapSettings = {

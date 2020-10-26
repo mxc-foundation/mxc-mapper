@@ -1,4 +1,7 @@
-const config = require( './package.json' );
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+const config = require("./package.json");
 
 const { title, description, author, repository, homepage } = config;
 
@@ -14,9 +17,23 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
-    'gatsby-plugin-resolve-src',
-    'gatsby-plugin-sass',
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-postcss`,
+    "gatsby-plugin-resolve-src",
+    "gatsby-plugin-sass",
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `https://cms.mxc.org:443`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`mapper-faq`],
+        loginData: {
+          identifier: `${process.env.STRAPI_USER}`,
+          password: `${process.env.STRAPI_PASSWORD}`,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -24,20 +41,28 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    'gatsby-plugin-react-leaflet',
+    "gatsby-plugin-react-leaflet",
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: siteMetadata.companyName,
         short_name: siteMetadata.companyName,
-        start_url: '/',
-        icon: 'src/assets/images/favicon.png',
+        start_url: "/",
+        icon: "src/assets/images/favicon.png",
       },
     },
     {
       resolve: `gatsby-source-mxc-supernode`,
       options: {
-        supernode: ['https://lora.supernode.matchx.io','https://lora.hunanhuaweikeji.com','https://mxcxy.com','https://lora.rosanetworks.com','https://k-supernode.com'],
+        supernode: [
+          "https://lora.supernode.matchx.io",
+          "https://lora.hunanhuaweikeji.com",
+          "https://mxcxy.com",
+          "https://lora.rosanetworks.com",
+          "https://k-supernode.com",
+          "https://ussn.matchx.io",
+          "https://supernode.iot-ducapital.net",
+        ],
       },
     },
     {
@@ -46,17 +71,17 @@ module.exports = {
         path: `${__dirname}/locales`,
         languages: [`en`, `hans`, `hant`, `ko`],
         defaultLanguage: `en`,
-  
+
         // you can pass any i18next options
         // pass following options to allow message content as a key
         i18nextOptions: {
           interpolation: {
-            escapeValue: false // not needed for react as it escapes by default
+            escapeValue: false, // not needed for react as it escapes by default
           },
           keySeparator: false,
-          nsSeparator: false
-        }
-      }
+          nsSeparator: false,
+        },
+      },
     },
   ],
 };
