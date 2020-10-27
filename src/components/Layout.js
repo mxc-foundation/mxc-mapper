@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
-
+import getLogo from '../data/DataURI'
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import mxcLogo from 'assets/images/MXC_Logo_Navy.png';
+import mxcLogo from 'assets/images/MXC_Logo_Navy.svg';
 import ModalFAQ from './Modal';
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 //import DropdownC from "./DropdownC";
@@ -23,6 +23,13 @@ const localStyled = {
     display: 'flex',
     justifyContent: 'center',
     marginBottom: 30 
+  },
+  flexCenterVersion: {
+    position: 'fixed',
+    display: 'flex',
+    justifyContent: 'center',
+    bottom: '10px',
+    right: '20px'
   },
   total: {
     display: 'flex',
@@ -104,7 +111,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
         <main>
           <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
-              <img src={mxcLogo} alt='logo' style={{height: 48}} />
+              <img src={getLogo()} alt='logo' style={{height: 48}} />
             </div>
           </div>
           { /* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
@@ -203,6 +210,11 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
               <NavText style={localStyled.flexCenterFAQ} >
               {/* <Link to="/faq/"><Trans>FAQ</Trans></Link> */}
                 <ModalFAQ buttonLabel={"FAQ"}/>
+              </NavText>
+            </NavItem>
+            <NavItem eventKey="version">
+              <NavText style={localStyled.flexCenterVersion} >
+                version: 1.0.1                
               </NavText>
             </NavItem>
           </SideNav.Nav> }

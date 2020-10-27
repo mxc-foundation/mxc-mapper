@@ -16,7 +16,7 @@ const ModalFAQ = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+      <Button style={{color: '#050319', backgroundColor: '#00FFD9', borderColor: '#00FFD9'}} onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} fade={false} toggle={toggle} className={className} size="lg">
         <ModalHeader toggle={toggle} style={{borderBottom: 'unset'}}/>
         <ModalBody>
