@@ -1,16 +1,16 @@
 /* eslint-disable   */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import 'assets/stylesheets/application.scss';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import getLogo from '../data/DataURI'
-
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalFAQ from './Modal';
 /* import DropdownC from "./DropdownC";
-import 'assets/stylesheets/application.scss';
+
 import RSwitch from "./RSwitch"; */
 
 
