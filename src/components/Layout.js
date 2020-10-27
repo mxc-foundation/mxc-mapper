@@ -111,7 +111,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
         <main>
           <div style={{ position: 'absolute', zIndex: 1000, top: 7, left: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
-              <img src={getLogo()} alt='logo' style={{height: 48}} />
+              <img src={getLogo()} alt='mxclogo' style={{height: 48}} />
             </div>
           </div>
           { /* <div style={{ backgroundColor:'rgba(255, 255, 255, .6)',  borderRadius: 5, position: 'absolute', zIndex: 1000, top: 16, right: `${ 20 + (expanded ? 306 : 64 )}px` }}>
