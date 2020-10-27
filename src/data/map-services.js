@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const mapServices = [
   {
     name: 'OpenStreetMap',
@@ -16,3 +17,4 @@ export const mapServices = [
     url: `https://api.mapbox.com/styles/v1/namgyeongcho/ckg8vwf6202uk19p9qac4oevt/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmFtZ3llb25nY2hvIiwiYSI6ImNrZzduYzhjZDA4dTMyeG96aXR5OHdmZDQifQ.xmG3uiCV2noOHtgNUvCCTQ`
   }
 ];
+/* eslint-enable */

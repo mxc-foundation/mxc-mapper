@@ -1,3 +1,4 @@
+/* eslint-disable   */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
@@ -137,6 +138,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
           }} */
         >
           <SideNav.Toggle />
+          
           { expanded && <SideNav.Nav >
             <NavItem eventKey="title">
               <NavText style={localStyled.title}>

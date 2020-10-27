@@ -1,5 +1,6 @@
+/* eslint-disable */
 import { mapServices } from 'data/map-services';
-
+/* eslint-enable */
 /**
  * getMapServicesByName
  * @description Returns all preconfigured services
