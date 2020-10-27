@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 import { Helmet } from 'react-helmet';
-import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import getLogo from '../data/DataURI'
-import 'assets/stylesheets/application.scss';
+
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import mxcLogo from 'assets/images/MXC_Logo_Navy.svg';
 import ModalFAQ from './Modal';
-import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
-//import DropdownC from "./DropdownC";
-//import RSwitch from "./RSwitch";
+/* import DropdownC from "./DropdownC";
+import 'assets/stylesheets/application.scss';
+import RSwitch from "./RSwitch"; */
 
 
 const localStyled = {
@@ -76,10 +75,10 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
   const { t } = useTranslation();
 
   const [expanded, setExpanded] = useState( true );
-  //const online = 9567;
-  //const offline = 57;
+  /* const online = 9567;
+  const offline = 57;
 
-  /* const [state, setState] = React.useState({
+  const [state, setState] = React.useState({
     checked: props.on
   });
 
@@ -104,8 +103,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
             href: 'favicon.png'
           }
         ]}
-        bodyAttributes={{ class: className }}>
-      </Helmet>
+        bodyAttributes={{ class: className }}/>
 
       <div className="wrapper">
         <main>
@@ -123,7 +121,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
                   <RSwitch />
                   <span style={{ padding: '0px 16px'}}>Coverage</span>
               </div>
-          </div> */ } { /* non-function */ }
+          </div> */ } 
           
           { children }
         </main>
@@ -147,7 +145,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
             </NavItem>
             { /* <NavItem eventKey="home" style={localStyled.flexCenter} >
               <DropdownC />
-            </NavItem> */ }{ /* non-function */ }
+            </NavItem> */ }
             
             <NavItem eventKey="charts">
               <NavText style={localStyled.total} >
@@ -186,9 +184,9 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
                   <span>453.34 MXC</span>
                 </div>
               </NavText>
-            </NavItem> */ }{ /* non-function */ }
+            </NavItem> 
 
-            { /* <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
+            <NavItem eventKey="check" style={{ padding: '0px 16px', marginTop: 39 }}>
               <NavText>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label style={{ fontSize: '1rem' }}>
@@ -205,10 +203,9 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
                   </label>
                 </div>
               </NavText>
-            </NavItem> */ }{ /* non-function */ }
+            </NavItem> */ }
             <NavItem eventKey="faq">
               <NavText style={localStyled.flexCenterFAQ} >
-              {/* <Link to="/faq/"><Trans>FAQ</Trans></Link> */}
                 <ModalFAQ buttonLabel={"FAQ"}/>
               </NavText>
             </NavItem>
