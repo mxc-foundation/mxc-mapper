@@ -211,7 +211,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
             </NavItem>
             <NavItem eventKey="version">
               <NavText style={localStyled.flexCenterVersion} >
-                version: 1.0.1                
+                version: 1.0.1          
               </NavText>
             </NavItem>
           </SideNav.Nav> }
