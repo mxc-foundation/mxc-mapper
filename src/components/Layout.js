@@ -76,7 +76,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
   }
   const { t } = useTranslation();
   
-  const [expanded, setExpanded] = useState( !isMobile );
+  const [expanded, setExpanded] = useState( false );
   /* const online = 9567;
   const offline = 57;
 
