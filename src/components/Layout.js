@@ -75,11 +75,8 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
     className = `${className} page-${pageName}`;
   }
   const { t } = useTranslation();
-  let open = true;
-  if (isMobile) {
-    open = false;
-  }
-  const [expanded, setExpanded] = useState( open );
+  
+  const [expanded, setExpanded] = useState( !isMobile );
   /* const online = 9567;
   const offline = 57;
 
