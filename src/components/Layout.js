@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {isMobile} from 'react-device-detect';
+
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
@@ -68,7 +68,7 @@ const localStyled = {
   }
 };
 
-const Layout = ({ children, pageName, total, lpwanTotal }) => {
+const Layout = ({ children, pageName, total, lpwanTotal, open }) => {
   let className = '';
 
   if ( pageName ) {
@@ -76,7 +76,7 @@ const Layout = ({ children, pageName, total, lpwanTotal }) => {
   }
   const { t } = useTranslation();
   
-  const [expanded, setExpanded] = useState( false );
+  const [expanded, setExpanded] = useState( open );
   /* const online = 9567;
   const offline = 57;
 

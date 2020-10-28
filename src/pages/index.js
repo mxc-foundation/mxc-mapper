@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import {isMobile} from 'react-device-detect';
 import L from 'leaflet';
 import { Marker } from 'react-leaflet';
 import { graphql } from 'gatsby';
@@ -143,7 +144,7 @@ const IndexPage = ({ data }) => {
   const maxClusterRadius = 80; // default = 80px
 
   return (
-    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal}>
+    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={!isMobile}>
       <Map {...mapSettings}  >
         <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius ={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
          { markers }
