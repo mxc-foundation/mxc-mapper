@@ -19,11 +19,22 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+@mixin media-gte-sm {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-lt-sm {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
 nav {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: unset !important;
   right: 0 !important;
   z-index: 1006;
   min-width: 64px !important;
@@ -33,7 +44,19 @@ nav {
   -o-transition: min-width 0.2s;
   -ms-transition: min-width 0.2s;
   transition: min-width 0.2s;
+  
+  @include media-gte-sm {
+    /* on tablets and above: attach to right-hand side */
+    left: unset !important;
+  }
 } 
+
+.nav-collapsed {
+  @include media-lt-sm {
+    /* on mobile, retract height */
+    bottom: unset !important;
+  }
+}
 
 main {
   padding: 2em 0;

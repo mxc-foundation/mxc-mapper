@@ -26,24 +26,7 @@ const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 10;
 const MAX_ZOOM = 13;
 const MIN_ZOOM = 3;
-/* const ZOOM = 10;
 
-const timeToZoom = 2000;
-const timeToOpenPopupAfterZoom = 4000;
-const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
-
-const popupContentHello = `<p>Hello 👋</p>`;
-const popupContentGatsby = `
-  <div class="popup-gatsby">
-    <div class="popup-gatsby-image">
-      <img class="gatsby-astronaut" src=${gatsby_astronaut} />
-    </div>
-    <div class="popup-gatsby-content">
-      <h1>Gatsby Leaflet Starter</h1>
-      <p>Welcome to your new Gatsby site. Now go build something great!</p>
-    </div>
-  </div>
- `; */
 
  const generateRandomLoc = () => {
   const random = new Random(); 
@@ -97,11 +80,9 @@ const IndexPage = ({ data }) => {
 
   async function mapEffect({ leafletElement } = {}) {
     if (!leafletElement) return;
-    if (!data) return; 
+    if (!data) return;
 
-    /* const popup = L.popup({
-      maxWidth: 800,
-    }); */
+    
 
     const location = await getCurrentLocation().catch(() => LOCATION);
 
