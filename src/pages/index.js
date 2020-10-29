@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React, { useRef } from 'react';
-import {isMobile} from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 import L from 'leaflet';
 import { Marker } from 'react-leaflet';
 import { graphql } from 'gatsby';
@@ -8,7 +9,6 @@ import { graphql } from 'gatsby';
 import { getCurrentLocation } from 'lib/map';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
-/* import gatsby_astronaut from 'assets/images/gatsby-astronaut.jpg'; */
 import { Icon } from 'leaflet/src/layer/marker'
 import { Random } from 'random-js';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
@@ -29,16 +29,16 @@ const MAX_ZOOM = 13;
 const MIN_ZOOM = 3;
 
 
- const generateRandomLoc = () => {
-  const random = new Random(); 
+const generateRandomLoc = () => {
+  const random = new Random();
   const value = random.integer(1, 100);
   return value / 10000 + 0.01;
- }
+}
 
- /**
- * This is markercluster's default iconCreateFunction with a className modifier.
- * @see https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542
- */
+/**
+* This is markercluster's default iconCreateFunction with a className modifier.
+* @see https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542
+*/
 function createDefaultClusterMarker(cluster, additionalClasses = '') {
   const childCount = cluster.getChildCount();
 
@@ -51,8 +51,10 @@ function createDefaultClusterMarker(cluster, additionalClasses = '') {
     c += 'large';
   }
 
-  return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: additionalClasses + ' marker-cluster' + c, 
-    iconSize: new L.Point(40, 40) });
+  return new L.DivIcon({
+    html: '<div><span>' + childCount + '</span></div>', className: additionalClasses + ' marker-cluster' + c,
+    iconSize: new L.Point(40, 40)
+  });
 }
 function createMinerClusterMarker(cluster) {
   return createDefaultClusterMarker(cluster, 'background-color-miners');
@@ -83,7 +85,7 @@ const IndexPage = ({ data }) => {
     if (!leafletElement) return;
     if (!data) return;
 
-    
+
 
     const location = await getCurrentLocation().catch(() => LOCATION);
 
@@ -93,14 +95,14 @@ const IndexPage = ({ data }) => {
     marker.setLatLng(location);
   }
   let open = true;
-  if (typeof window !== 'undefined'){
-    if(window.innerWidth <= 800){
+  if (typeof window !== 'undefined') {
+    if (window.innerWidth <= 800) {
       open = false;
     }
   }
 
-  let markerIcon = null; 
-  let markerIcon2 = null; 
+  let markerIcon = null;
+  let markerIcon2 = null;
   if (typeof window !== 'undefined') {
     markerIcon = new Icon({
       iconUrl: require('../assets/images/diconActive.svg'),
@@ -124,22 +126,21 @@ const IndexPage = ({ data }) => {
     });
   }
 
-  const markers = data && data.allMxcSupernode.nodes.map( function ( val, index ) {
+  const markers = data && data.allMxcSupernode.nodes.map(function (val, index) {
     return <Marker ref={markerRef} key={index} icon={(!!markerIcon) ? markerIcon : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
   });
 
-  const markers2 = data && data.allLpwanGateways.nodes.map( function ( val, index  ) {
-    return <Marker ref={markerRef} key={index} icon={(!!markerIcon2) ? markerIcon2 : null} 
-    position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]}></Marker>;
+  const markers2 = data && data.allLpwanGateways.nodes.map(function (val, index) {
+    return <Marker ref={markerRef} key={index} icon={(!!markerIcon2) ? markerIcon2 : null} position={[val.location.latitude + generateRandomLoc(), val.location.longitude + generateRandomLoc()]} />;
   });
-  
+
   const mapSettings = {
     center: CENTER,
     defaultBaseMap: 'Mapbox',
     zoom: DEFAULT_ZOOM,
-    maxZoom: MAX_ZOOM, 
+    maxZoom: MAX_ZOOM,
     minZoom: MIN_ZOOM,
-    preferCanvas:true,
+    preferCanvas: true,
     mapEffect
   };
 
@@ -150,13 +151,13 @@ const IndexPage = ({ data }) => {
   const maxClusterRadius = 80; // default = 80px
 
   return (
-    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={open}>
-      <Map {...mapSettings}  >
-        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius ={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
-         { markers }
+    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={!!open}>
+      <Map {...mapSettings}>
+        <MarkerClusterGroup showCoverageOnHover maxClusterRadius={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
+          {markers}
         </MarkerClusterGroup>
-        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius ={maxClusterRadius} iconCreateFunction={createLp1ClusterMarker}>
-         { markers2 }
+        <MarkerClusterGroup showCoverageOnHover maxClusterRadius={maxClusterRadius} iconCreateFunction={createLp1ClusterMarker}>
+          {markers2}
         </MarkerClusterGroup>
       </Map>
     </Layout>
