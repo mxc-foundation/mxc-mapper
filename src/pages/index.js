@@ -94,10 +94,10 @@ const IndexPage = ({ data }) => {
 
     marker.setLatLng(location);
   }
-  let open = true;
+  let open = false;
   if (typeof window !== 'undefined') {
-    if (window.innerWidth <= 800) {
-      open = false;
+    if (window.innerWidth > 800) {
+      open = true;
     }
   }
 
@@ -151,7 +151,7 @@ const IndexPage = ({ data }) => {
   const maxClusterRadius = 80; // default = 80px
 
   return (
-    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={!!open}>
+    <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={open}>
       <Map {...mapSettings}>
         <MarkerClusterGroup showCoverageOnHover maxClusterRadius={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
           {markers}
