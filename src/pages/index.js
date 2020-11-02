@@ -19,7 +19,7 @@ import '../components/map.styles.css';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 /* import {DefaultIcon} from '../components/DefaultIcon';  */
 
-const LOCATION = {
+/* const LOCATION = {
   lat: 52.1200,
   lng: 13.4050,
 };
@@ -33,13 +33,13 @@ const generateRandomLoc = () => {
   const random = new Random();
   const value = random.integer(1, 100);
   return value / 10000 + 0.01;
-}
+} */
 
 /**
 * This is markercluster's default iconCreateFunction with a className modifier.
 * @see https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542
 */
-function createDefaultClusterMarker(cluster, additionalClasses = '') {
+/* function createDefaultClusterMarker(cluster, additionalClasses = '') {
   const childCount = cluster.getChildCount();
 
   let c = ' marker-cluster-';
@@ -62,7 +62,7 @@ function createMinerClusterMarker(cluster) {
 
 function createLp1ClusterMarker(cluster) {
   return createDefaultClusterMarker(cluster, 'background-color-lpwan');
-}
+} */
 
 
 
@@ -81,7 +81,7 @@ const IndexPage = ({ data }) => {
    * @example Here this is and example of being used to zoom in and set a popup on load
    */
 
-  async function mapEffect({ leafletElement } = {}) {
+  /* async function mapEffect({ leafletElement } = {}) {
     if (!leafletElement) return;
     if (!data) return;
 
@@ -142,7 +142,7 @@ const IndexPage = ({ data }) => {
     minZoom: MIN_ZOOM,
     preferCanvas: true,
     mapEffect
-  };
+  }; */
 
   // TODO: profile performance
   // 1. setup performance counters (timers); e.g.: how much time between start + first render complete (post render hook)?
@@ -152,21 +152,21 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout pageName="home" total={total} lpwanTotal={lwpanTotal} open={open}>
-      <Map {...mapSettings}>
+      {/* <Map {...mapSettings}>
         <MarkerClusterGroup showCoverageOnHover maxClusterRadius={maxClusterRadius} iconCreateFunction={createMinerClusterMarker} >
           {markers}
         </MarkerClusterGroup>
         <MarkerClusterGroup showCoverageOnHover maxClusterRadius={maxClusterRadius} iconCreateFunction={createLp1ClusterMarker}>
           {markers2}
         </MarkerClusterGroup>
-      </Map>
+      </Map> */}
     </Layout>
   );
 };
 
 export default IndexPage;
 
-export const query = graphql`
+/* export const query = graphql`
   query {
     allMxcSupernode {
     nodes {
@@ -193,4 +193,4 @@ export const query = graphql`
     }
   }
 }
-`;
+`; */
