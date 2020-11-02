@@ -141,9 +141,9 @@ const Layout = ({ children, pageName, total, lpwanTotal, open }) => {
         >
           <SideNav.Toggle />
 
-          {!open ? <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
+          {!open ? 
             <img src={getLogo('dark')} alt='mxclogo' style={{height: 24, marginTop: 14}} />
-          </div> : null}
+          : null}
           
           { expanded && <SideNav.Nav >
             <NavItem eventKey="title">
