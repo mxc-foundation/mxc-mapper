@@ -51,7 +51,7 @@ module.exports = {
         icon: "src/assets/images/favicon.png",
       },
     },
-    /* {
+    {
       resolve: `gatsby-source-mxc-supernode`,
       options: {
         supernode: [
@@ -64,7 +64,7 @@ module.exports = {
           "https://supernode.iot-ducapital.net",
         ],
       },
-    }, */
+    },
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {

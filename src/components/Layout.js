@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import 'assets/stylesheets/application.scss';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {isMobile} from 'react-device-detect';
+
 import SideNav, { NavItem, NavText } from '@trendmicro/react-sidenav';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
@@ -141,7 +141,7 @@ const Layout = ({ children, pageName, total, lpwanTotal, open }) => {
         >
           <SideNav.Toggle />
 
-          {isMobile ? <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
+          {!open ? <div style={{ display: 'flex', alignItems: 'center', padding: '0px 15px 10px 15px' }}>
             <img src={getLogo('dark')} alt='mxclogo' style={{height: 24, marginTop: 14}} />
           </div> : null}
           
