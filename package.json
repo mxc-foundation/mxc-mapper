@@ -28,7 +28,7 @@
     "gatsby-plugin-sass": "^2.3.10",
     "gatsby-source-filesystem": "^2.3.18",
     "gatsby-source-graphql": "^2.6.1",
-    "gatsby-source-mxc-supernode": "^3.0.2",
+    "gatsby-source-mxc-supernode": "^3.0.3",
     "gatsby-source-strapi": "0.0.12",
     "i18next": "^19.6.3",
     "leaflet": "^1.6.0",
