@@ -4,13 +4,13 @@ describe( 'lib::map-services', () => {
   describe( 'getMapServices', () => {
     it( 'should get a list of available map services', () => {
       const services = getMapServices();
-      expect( services[0].name ).toMatch( 'OpenStreetMap' );
+      expect( services[0].name ).toMatch( 'Mapbox' );
     });
   });
 
   describe( 'getMapServiceByName', () => {
     it( 'should get a service by name', () => {
-      const name = 'OpenStreetMap';
+      const name = 'Mapbox';
       const service = getMapServiceByName( name );
       expect( service.name ).toMatch( name );
     });
