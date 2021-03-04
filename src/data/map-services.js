@@ -1,4 +1,6 @@
 /* eslint-disable */
+import getToken from "./PublicTokens"
+
 export const mapServices = [
   {
     name: 'OpenStreetMap',
@@ -14,7 +16,7 @@ export const mapServices = [
   {
     name: 'Mapbox',
     attribution: 'Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>',
-    url: `https://api.mapbox.com/styles/v1/namgyeongcho/ckg8vwf6202uk19p9qac4oevt/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmFtZ3llb25nY2hvIiwiYSI6ImNrZzduYzhjZDA4dTMyeG96aXR5OHdmZDQifQ.xmG3uiCV2noOHtgNUvCCTQ`
+    url: `https://api.mapbox.com/styles/v1/mxcdatadash/ck9qr005y5xec1is8yu6i51kw/tiles/256/{z}/{x}/{y}@2x?access_token=${getToken()}`
   }
 ];
 /* eslint-enable */
