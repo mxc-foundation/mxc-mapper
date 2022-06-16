@@ -39,7 +39,7 @@ const localStyled = {
     fontSize: 60,
     font: 'normal normal medium 60px/71px Roboto',
     letterSpacing: 0,
-    color: '#00FFD9',
+    color: '#A885E0',
     marginTop: 38,
     opacity: 1,
   },
