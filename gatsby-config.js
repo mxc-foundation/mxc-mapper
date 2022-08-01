@@ -61,7 +61,7 @@ module.exports = {
           "https://lora.rosanetworks.com",
           "https://k-supernode.com",
           "https://ussn.matchx.io",
-          "https://supernode.iot-ducapital.net",
+          "https://duiot.net",
         ],
       },
     },
