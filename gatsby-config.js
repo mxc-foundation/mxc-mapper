@@ -58,10 +58,11 @@ module.exports = {
           "https://lora.supernode.matchx.io",
           "https://lora.hunanhuaweikeji.com",
           "https://mxcxy.com",
-          "https://lora.rosanetworks.com",
+          "https://rosa-iot.org",
           "https://k-supernode.com",
           "https://ussn.matchx.io",
           "https://duiot.net",
+		  "https://wanshipool.com"
         ],
       },
     },
