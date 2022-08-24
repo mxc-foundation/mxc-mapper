@@ -55,14 +55,14 @@ module.exports = {
       resolve: `gatsby-source-mxc-supernode`,
       options: {
         supernode: [
-          "https://lora.supernode.matchx.io",
+          "https://eusn.matchx.io",
           "https://lora.hunanhuaweikeji.com",
           "https://mxcxy.com",
           "https://rosa-iot.org",
           "https://k-supernode.com",
           "https://ussn.matchx.io",
           "https://duiot.net",
-		  "https://wanshipool.com"
+	  "https://wanshipool.com"
         ],
       },
     },
